@@ -1,11 +1,12 @@
-FROM python:3.11
+FROM python:3.11-slim
 
-# 기본 도구 설치
+# 기본 도구 설치 및 보안 패치 적용
 RUN apt-get update && apt-get install -y \
     git \
     curl \
     wget \
     sudo \
+    && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget -qO- https://astral.sh/uv/install.sh | sh

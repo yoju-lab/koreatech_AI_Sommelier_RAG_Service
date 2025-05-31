@@ -1,5 +1,8 @@
 langchain-community
 langchain-openai
-pandas
 python-dotenv
-streamlit
+pinecone-client 
+langchain 
+langchain-pinecone
+pandas
+datasets
