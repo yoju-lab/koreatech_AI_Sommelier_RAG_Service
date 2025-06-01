@@ -15,10 +15,10 @@ RUN wget -qO- https://astral.sh/uv/install.sh | sh
 WORKDIR /apps
 
 # Clone the Git repository. Here we dynamically specify the repository name using the variable defined earlier.
-RUN git clone https://github.com/yoju-lab/koreatech_LangChain_withRags koreatech_LangChain_withRags
+RUN git clone https://github.com/yoju-lab/koreatech_AI_Sommelier_RAG_Service koreatech_AI_Sommelier_RAG_Service
 
 # Changes the working directory to /app/${REPO_NAME}. This uses the variable to dynamically set the directory path.
-WORKDIR /apps/koreatech_LangChain_withRags
+WORKDIR /apps/koreatech_AI_Sommelier_RAG_Service
 
 RUN python -m pip install --upgrade pip
 RUN python -m pip install --no-cache-dir -r ./requirements.txt
