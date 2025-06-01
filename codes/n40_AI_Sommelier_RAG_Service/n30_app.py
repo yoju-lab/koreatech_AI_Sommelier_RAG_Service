@@ -6,7 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
 
 import streamlit as st
-from n30_sommeliers import search_wine, recommand_wine, describe_dish_flavor
+from n30_sommeliers import search_wine, search_wine_with_score, recommand_wine, describe_dish_flavor
 
 st.title("Sommelier AI")
 
@@ -31,14 +31,16 @@ with col1:
                 st.info(dish_flavor)
 
             with st.spinner("2단계: 요리에 어울리는 와인 리뷰를 검색하는 중..."):
-                wine_search_result = search_wine(dish_flavor)
+                # wine_search_result = search_wine(dish_flavor)
+                wine_search_result = search_wine_with_score(dish_flavor)
                 st.markdown("#### 🍷 와인 리뷰 검색 결과")
-                st.text(wine_search_result['wine_reviews'])
+                wine_reviews = wine_search_result['wine_reviews']
+                st.text(wine_reviews)
 
             with st.spinner("3단계: AI 소믈리에가 와인 페어링에 대한 추천글을 생성하는 중..."):
                 recommand_wine_result = recommand_wine({
                     "dish_flavor": dish_flavor,
-                    "wine_reviews": wine_search_result['wine_reviews'],
+                    "wine_reviews": wine_reviews,
                 })
                 st.markdown("#### 🍷 AI 소믈리에의 추천")
                 st.info(recommand_wine_result)

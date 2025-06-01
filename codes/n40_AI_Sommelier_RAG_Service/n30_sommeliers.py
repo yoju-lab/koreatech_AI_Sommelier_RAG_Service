@@ -86,6 +86,20 @@ def search_wine(dish_flavor):
         "wine_reviews": "\n\n".join([doc.page_content for doc in results])
     }
 
+def search_wine_with_score(dish_flavor):
+    results_with_scores = vector_store.similarity_search_with_score(
+        dish_flavor,
+        k=2
+    )
+
+    return {
+        "dish_flavor": dish_flavor,
+        "wine_reviews": "\n\n".join([
+            f""" score: {score} \n content: {doc.page_content}
+            """
+            for doc, score in results_with_scores
+        ])
+    }
 
 def recommand_wine(input_data):
     prompt = ChatPromptTemplate.from_messages([
