@@ -87,7 +87,7 @@ def search_wine(dish_flavor):
     }
 
 
-def recommand_wine(query):
+def recommand_wine(input_data):
     prompt = ChatPromptTemplate.from_messages([
         ("system", """
             Persona:
@@ -111,7 +111,9 @@ def recommand_wine(query):
             If you enjoy wines with bold flavors and intense tannins, a Cabernet Sauvignon from Napa Valley would suit your palate perfectly. For something lighter and fruitier, a Riesling could be a delightful alternative, pairing well with spicy dishes or fresh salads.
         """),
         ("human", """
-            와인 페어링 추천에 아래의 요리의 풍미와 와인 리뷰를 참고해 한글로 답변해 주세요요.
+            와인 페어링 추천에 아래의 요리의 풍미와 와인 리뷰를 참고해 한글로 답변해 주세요.
+            와인 중 가장 최선인 와인을 추천하고 , 그 이유를 설명해 주세요.
+
             요리의 풍미:
             {dish_flavor}
 
@@ -122,4 +124,4 @@ def recommand_wine(query):
 
     chain = prompt | llm | StrOutputParser()
 
-    return chain.invoke(query)
+    return chain.invoke(input_data)

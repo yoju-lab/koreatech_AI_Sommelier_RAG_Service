@@ -36,6 +36,11 @@ with col1:
                 st.text(wine_search_result['wine_reviews'])
 
             with st.spinner("3단계: AI 소믈리에가 와인 페어링에 대한 추천글을 생성하는 중..."):
-                pass
+                recommand_wine_result = recommand_wine({
+                    "dish_flavor": dish_flavor,
+                    "wine_reviews": wine_search_result['wine_reviews'],
+                })
+                st.markdown("#### 🍷 AI 소믈리에의 추천")
+                st.info(recommand_wine_result)
 
             st.success("추천이 완료되었습니다!")
