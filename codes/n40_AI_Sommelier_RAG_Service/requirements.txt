@@ -1,9 +1,0 @@
-langchain-community
-langchain-openai
-python-dotenv
-pinecone-client 
-langchain 
-langchain-pinecone
-pandas
-datasets
-streamlit
