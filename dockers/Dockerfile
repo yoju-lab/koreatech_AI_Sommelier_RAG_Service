@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     sudo \
+    mecab libmecab-dev mecab-ipadic-utf8 \
     && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*
 
