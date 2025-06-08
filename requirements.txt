@@ -12,3 +12,4 @@ scikit-learn
 eunjeon
 rank-bm25
 lark
+konlpy
