@@ -6,11 +6,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     sudo \
-    mecab libmecab-dev mecab-ipadic-utf8 \
     && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*
-
-RUN wget -qO- https://astral.sh/uv/install.sh | sh
 
 # 작업 디렉토리 설정
 WORKDIR /apps
